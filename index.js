@@ -5,17 +5,17 @@ const apiKey = process.env.API_KEY;
 const baseApiUrl = process.env.API_URL;
 
 const source = new EventSource('http://stream.pushshift.io');
-const addDiamondRegex = /^(\!RedditDiamond( add)?)/
+const addHaloRegex = /^(\!RedditHalo)/
 
 source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
 
-  if (comment.body.match(addDiamondRegex)) {
-    addDiamond(comment);
+  if (comment.body.match(addHaloRegex)) {
+    addHalo(comment);
   }
 })
 
-function postComment(comment) {
+function addHalo(comment) {
   const requestOptions = {
     headers: {
       'x-api-key': apiKey,
