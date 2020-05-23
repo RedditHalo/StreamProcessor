@@ -1,16 +1,21 @@
 const EventSource = require('eventsource');
 const request = require('request');
 
-const apiKey = process.env.API_KEY;
-const baseApiUrl = process.env.API_URL;
+// const apiKey = process.env.API_KEY;
+// const baseApiUrl = process.env.API_URL;
+
+const apiKey = "";
+const baseApiUrl = "";
+
 
 const source = new EventSource('http://stream.pushshift.io');
 const addHaloRegex = /^(\!RedditHalo)/
 
 source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
+  console.log(comment)
 
-  if (comment.body.match(addHaloRegex) || comment.body.includes("!RedditHalo")) {
+  if (comment.body.match(addHaloRegex)) {
     console.log(comment)
     addHalo(comment);
   }
