@@ -12,8 +12,7 @@ source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
 
   countt++;
-
-  if (countt % 50 === 0) console.log(countt)
+  if (countt % 500 === 0) console.log(comment.id)
  
   if (comment.body.match(addHaloRegex)) {
     addHalo(comment);
