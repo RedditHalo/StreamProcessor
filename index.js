@@ -11,6 +11,7 @@ source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
 
   if (comment.body.match(addHaloRegex)) {
+    console.log(comment)
     addHalo(comment);
   }
 })
@@ -25,6 +26,7 @@ function addHalo(comment) {
       commentId: comment.id
     }
   };
+  console.log("requestOptions", requestOptions)
 
   request.post(`${baseApiUrl}/add-halo`, requestOptions, (error, response, body) => {
     if (error) {
