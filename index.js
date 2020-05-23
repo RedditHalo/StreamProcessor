@@ -10,7 +10,7 @@ const addHaloRegex = /^(\!RedditHalo)/
 source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
 
-  if (comment.body.match(addHaloRegex)) {
+  if (comment.body.match(addHaloRegex) || comment.body.includes("!RedditHalo")) {
     console.log(comment)
     addHalo(comment);
   }
