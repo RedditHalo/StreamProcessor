@@ -13,15 +13,14 @@ const addHaloRegex = /^(\!RedditHalo)/
 
 source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
-  console.log(comment)
 
   if (comment.body.match(addHaloRegex)) {
-    console.log(comment)
     addHalo(comment);
   }
 })
 
 function addHalo(comment) {
+  console.log(`Adding halo from comment ${comment.id}`)
   const requestOptions = {
     headers: {
       'x-api-key': apiKey,
