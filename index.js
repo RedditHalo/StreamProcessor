@@ -8,7 +8,7 @@ const source = new EventSource('http://stream.pushshift.io');
 const addHaloRegex = /^(\!RedditHalo)/
 var countt = 0;
 
-source.addEventListener('rc', (e) => {
+source.onmessage = (e) => {
   const comment = JSON.parse(e.data);
 
   countt++;
