@@ -4,11 +4,11 @@ const request = require('request');
 const apiKey = process.env.API_KEY;
 const baseApiUrl = process.env.API_URL;
 
-const source = new EventSource('http://stream.pushshift.io');
+const source = new EventSource('https://stream.pushshift.io/?type=comments&filter=id,body');
 const addHaloRegex = /^(\!RedditHalo)/
 var countt = 0;
 
-source.onmessage = (e) => {
+source.addEventListener('rc', (e) => {
   const comment = JSON.parse(e.data);
 
   countt++;
